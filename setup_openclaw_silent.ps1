@@ -1,4 +1,4 @@
-﻿# OpenClaw Gateway Silent Startup Configuration Script
+# OpenClaw Gateway Silent Startup Configuration Script
 # Run as Administrator
 
 Write-Host "`n========================================" -ForegroundColor Cyan
@@ -150,5 +150,5 @@ try {
 # Step 6: Prompt user about completion
 Write-Host "`nStep 6: Prompt user" -ForegroundColor Yellow
 
-$message = "OpenClaw configuration completed. Please visit your browser to experience it!"
+$message = "OpenClaw configuration completed. Please visit your browser to experience it!`n"
 Write-Host $message -ForegroundColor Green
