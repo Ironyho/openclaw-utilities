@@ -63,7 +63,7 @@ if (-not $foundTasks) {
     exit 0
 }
 
-Write-Host "Found $($foundTasks.Count) task(s):" -ForegroundColor Green
+Write-Host "-- Found $($foundTasks.Count) task(s):" -ForegroundColor Green
 $foundTasks | ForEach-Object { 
     Write-Host "  - [$($_.State)] $($_.TaskPath)$($_.TaskName)" -ForegroundColor White 
 }
@@ -80,7 +80,7 @@ if (-not $targetTask) {
 }
 
 $fullTaskName = $targetTask.TaskPath + $targetTask.TaskName
-Write-Host "`nModifying task: $fullTaskName" -ForegroundColor Yellow
+Write-Host "`n-- Modifying task: $fullTaskName" -ForegroundColor Yellow
 
 try {
     $taskDetail = Get-ScheduledTask -TaskName $targetTask.TaskName -TaskPath $targetTask.TaskPath
@@ -148,7 +148,7 @@ try {
 }
 
 # Step 6: Prompt user about completion
-Write-Host "`nStep 6: Prompt user" -ForegroundColor Yellow
+Write-Host "`nStep 6: All Completed" -ForegroundColor Yellow
 
 $message = "OpenClaw configuration completed. Please visit your browser to experience it!`n"
 Write-Host $message -ForegroundColor Green
