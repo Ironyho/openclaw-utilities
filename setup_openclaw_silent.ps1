@@ -122,8 +122,9 @@ Write-Host "`nOpenClaw Gateway will start silently on next boot" -ForegroundColo
 # Step 4: Stop existing gateway PowerShell/CMD process
 Write-Host "`nStep 4: Stop existing gateway process" -ForegroundColor Yellow
 
-$gatewayProcs = Get-Process powershell, cmd -ErrorAction SilentlyContinue |
-    Where-Object { $_.CommandLine -match "gateway" }
+$gatewayProcs = Get-CimInstance Win32_Process |
+    Where-Object { $_.Name -match "^(node|openclaw-gateway)\.exe$" } |
+    Where-Object { $_.Name -eq "openclaw-gateway.exe" -or $_.CommandLine -match "gateway" }
 
 if ($gatewayProcs) {
     $gatewayProcs | ForEach-Object {
