@@ -119,10 +119,10 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "VBS file: $vbsPath" -ForegroundColor White
 Write-Host "`nOpenClaw Gateway will start silently on next boot" -ForegroundColor Green
 
-# Step 4: Stop existing gateway PowerShell process
+# Step 4: Stop existing gateway PowerShell/CMD process
 Write-Host "`nStep 4: Stop existing gateway process" -ForegroundColor Yellow
 
-$gatewayProcs = Get-Process powershell -ErrorAction SilentlyContinue |
+$gatewayProcs = Get-Process powershell, cmd -ErrorAction SilentlyContinue |
     Where-Object { $_.CommandLine -match "gateway" }
 
 if ($gatewayProcs) {
